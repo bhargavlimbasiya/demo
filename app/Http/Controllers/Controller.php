@@ -46,6 +46,7 @@ class Controller extends BaseController
         $userData = User::firstOrNew(['email' =>  request('email')]);
         $userData->name = $user['name'];
         $userData->email = $user['email'];
+        $userData->phone_number = $user['phone_number'];
         $userData->password = Hash::make($user['password']);
         $userData->save();
         $userData->assignRole(['Admin']);
