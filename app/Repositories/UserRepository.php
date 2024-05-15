@@ -117,19 +117,28 @@ class UserRepository implements UserRepositoryInterface
             if ($date != "") {
                 $joiningDate = date("m/d/Y", strtotime($date));
             }
-
+            
             if ($user->status == '1' ? 'checked' : '') {
                 $statusToggle = $user->status == '1' ? 'checked' : '';
             }
 
+          
+
+            $action = '';
             $status = '<div class="col-lg-8 d-flex align-items-center">
             <div class="form-check form-check-solid form-switch form-check-custom fv-row">
-                <input type="checkbox" name="select" class="form-check-input status_'.$getId.' w-45px h-30px toggle-class status_check" data-id="' . $getId . '" id="status" data-on="Active" data-off="InActive" onchange="statusToggle();"' . $statusToggle . '>
+                <input type="checkbox" name="select" class="form-check-input status_'.$getId.' w-45px h-30px toggle-class status_check" data-id="' . $getId . '" id="status" data-on="Active" data-off="InActive" disabled   ' . $statusToggle . '>
                </div>
                </div>';
 
-            $action = '';
             if (auth()->user()->can('user-edit')) {
+                
+                $status = '<div class="col-lg-8 d-flex align-items-center">
+                <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                    <input type="checkbox" name="select" class="form-check-input status_'.$getId.' w-45px h-30px toggle-class status_check" data-id="' . $getId . '" id="status" data-on="Active" data-off="InActive" onchange="statusToggle();"' . $statusToggle . '>
+                   </div>
+                   </div>';
+
                 $action .= '<div style="float:right;"><a href="' . $edit . '" title="Edit" class="navi-link" style="margin-right: 7px;">
                                        <span class="navi-icon">
                                            <i class="fa fa-edit text-primary" style="font-size:1.5rem;"></i>
