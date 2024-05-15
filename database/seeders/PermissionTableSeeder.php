@@ -20,24 +20,17 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            ['name' => 'role-list'],
-            ['name' => 'role-create'],
-            ['name' => 'role-edit'],
-            ['name' => 'role-show'],
-            ['name' => 'role-delete'],
-            ['name' => 'user-list'],
-            ['name' => 'user-create'],
-            ['name' => 'user-edit'],
-            ['name' => 'user-delete'],
+            ['name' => 'role-list','guard_name'=>'web'],
+            ['name' => 'role-create','guard_name'=>'web'],
+            ['name' => 'role-edit','guard_name'=>'web'],
+            ['name' => 'role-show','guard_name'=>'web'],
+            ['name' => 'role-delete','guard_name'=>'web'],
+            ['name' => 'user-list','guard_name'=>'web'],
+            ['name' => 'user-create','guard_name'=>'web'],
+            ['name' => 'user-edit','guard_name'=>'web'],
+            ['name' => 'user-delete','guard_name'=>'web'],
         ];
-
-        foreach ($permissions as $permission) {
-            Permission::updateOrCreate(
-                ['name' => $permission['name']],
-                [
-                    'updated_at' => Carbon::now(),
-                ]
-            );
-        }
+        Permission::upsert($permissions, 'name');
+       
     }
 }
