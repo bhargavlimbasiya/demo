@@ -127,7 +127,7 @@ class UserRepository implements UserRepositoryInterface
             $action = '';
             $status = '<div class="col-lg-8 d-flex align-items-center">
             <div class="form-check form-check-solid form-switch form-check-custom fv-row">
-                <input type="checkbox" name="select" class="form-check-input status_'.$getId.' w-45px h-30px toggle-class status_check" data-id="' . $getId . '" id="status" data-on="Active" data-off="InActive" disabled   ' . $statusToggle . '>
+                <input type="checkbox" name="select" class="form-check-input status_'.$getId.' w-45px h-30px  status_check" data-id="' . $getId . '" id="status" data-on="Active" data-off="InActive" disabled   ' . $statusToggle . '>
                </div>
                </div>';
 
