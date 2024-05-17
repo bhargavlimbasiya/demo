@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\CategoryController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +48,9 @@ Route::middleware([
     Route::resource('admin-users', UserController::class);
     Route::get('change-status', [UserController::class, 'changeUserStatus'])->name('change-status');
     Route::get('user-list-admin', [UserController::class, 'userAjaxList'])->name('user-list-admin');
+
+    Route::resource('categories', CategoryController::class);
+    Route::get('category-list', [CategoryController::class, 'ajaxList'])->name('category-list');
+    Route::get('change-category-status', [CategoryController::class, 'changeUserStatus'])->name('change-category-status');
+    Route::post('category-bulk-delete', [CategoryController::class, 'bulkDelete'])->name('category-bulk-delete');
 });

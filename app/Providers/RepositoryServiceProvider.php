@@ -7,6 +7,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 
+use App\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\CategoryRepository;
+
 use App\Repositories\ForgotPasswordRepository;
 use App\Interfaces\ForgotPasswordRepositoryInterface;
 
@@ -24,6 +27,9 @@ class RepositoryServiceProvider extends ServiceProvider
         });
         $this->app->bind(ForgotPasswordRepositoryInterface::class, function ($app) {
             return $app->make(ForgotPasswordRepository::class);
+        });
+        $this->app->bind(CategoryRepositoryInterface::class, function ($app) {
+            return $app->make(CategoryRepository::class);
         });
     }
 
